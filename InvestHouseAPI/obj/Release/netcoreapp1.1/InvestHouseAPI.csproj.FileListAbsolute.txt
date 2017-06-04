@@ -1,0 +1,9 @@
+D:\Work\InvestHouseAPI\InvestHouseAPI\bin\Release\netcoreapp1.1\InvestHouseAPI.deps.json
+D:\Work\InvestHouseAPI\InvestHouseAPI\bin\Release\netcoreapp1.1\InvestHouseAPI.runtimeconfig.json
+D:\Work\InvestHouseAPI\InvestHouseAPI\bin\Release\netcoreapp1.1\InvestHouseAPI.runtimeconfig.dev.json
+D:\Work\InvestHouseAPI\InvestHouseAPI\bin\Release\netcoreapp1.1\InvestHouseAPI.dll
+D:\Work\InvestHouseAPI\InvestHouseAPI\bin\Release\netcoreapp1.1\InvestHouseAPI.pdb
+D:\Work\InvestHouseAPI\InvestHouseAPI\obj\Release\netcoreapp1.1\InvestHouseAPI.AssemblyInfo.cs
+D:\Work\InvestHouseAPI\InvestHouseAPI\obj\Release\netcoreapp1.1\InvestHouseAPI.dll
+D:\Work\InvestHouseAPI\InvestHouseAPI\obj\Release\netcoreapp1.1\InvestHouseAPI.pdb
+D:\Work\InvestHouseAPI\InvestHouseAPI\obj\Release\netcoreapp1.1\InvestHouseAPI.csprojResolveAssemblyReference.cache
