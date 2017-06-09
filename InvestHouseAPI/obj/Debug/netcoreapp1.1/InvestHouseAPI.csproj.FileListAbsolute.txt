@@ -7,3 +7,12 @@ D:\Work\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.csp
 D:\Work\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.AssemblyInfo.cs
 D:\Work\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.dll
 D:\Work\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.pdb
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp1.1\InvestHouseAPI.deps.json
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp1.1\InvestHouseAPI.runtimeconfig.json
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp1.1\InvestHouseAPI.runtimeconfig.dev.json
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp1.1\InvestHouseAPI.dll
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp1.1\InvestHouseAPI.pdb
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.csprojResolveAssemblyReference.cache
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.AssemblyInfo.cs
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.dll
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.pdb

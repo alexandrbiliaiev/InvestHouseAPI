@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\ValuesController.cs" />
+    <Compile Remove="Models\investHouseContext.cs" />
   </ItemGroup>
 
   <ItemGroup>

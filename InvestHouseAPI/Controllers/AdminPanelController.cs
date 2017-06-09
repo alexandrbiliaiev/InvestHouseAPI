@@ -6,18 +6,23 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using InvestHouseAPI.Models;
 using InvestHouseAPI.DTO;
+using Microsoft.AspNetCore.Cors;
 
 namespace InvestHouseAPI.Controllers
 {
+
     public class AdminPanelController : Controller
     {
-        [HttpGet]
-        [Route("api/admin/sites/get")]
-        public IEnumerable<SitesDTO> getSites()
+
+        public DB_A26102_investHouseContext context = new DB_A26102_investHouseContext();
+
+        [HttpPost]
+        [Route("api/admin/site/get")]
+        public IEnumerable<SitesDTO> getSites([FromBody] SitesDTO site)
         {
-            using (investHouseContext context = new investHouseContext())
+            using (context)
             {
-                List<SitesDTO> sites = context.Sites.ToList().Select(s => new SitesDTO(s)).ToList();
+                List<SitesDTO> sites = context.Sites.Where(s => s.Id == site.Id).ToList().Select(s => new SitesDTO(s)).ToList();
 
                 return sites;
             }
@@ -28,7 +33,7 @@ namespace InvestHouseAPI.Controllers
         [Route("/api/admin/sites/save")]
         public SitesDTO SaveSite([FromBody] SitesDTO site)
         {
-            using (investHouseContext context = new investHouseContext())
+            using (context)
             {
                 Sites st;
                 if (site.Id != 0)
@@ -60,7 +65,7 @@ namespace InvestHouseAPI.Controllers
         [Route("/api/admin/sites/delete")]
         public bool deleteSite([FromBody] SitesDTO site)
         {
-            using (investHouseContext context = new investHouseContext())
+            using (context)
             {
                 Sites siteToRemove = context.Sites.Where(s => s.Id == site.Id).FirstOrDefault();
 
@@ -69,6 +74,19 @@ namespace InvestHouseAPI.Controllers
                 context.SaveChanges();
 
                 return true;
+            }
+        }
+
+
+        [HttpPost]
+        [Route("api/admin/content/get")]
+        public IEnumerable<ContentDTO> getContent([FromBody] SitesDTO site)
+        {
+            using (context)
+            {
+                List<ContentDTO> contentList = context.Content.Where(i => i.SiteId == site.Id).ToList().Select(c => new ContentDTO(c)).ToList();
+
+                return contentList;
             }
         }
 

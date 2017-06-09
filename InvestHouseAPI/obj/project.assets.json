@@ -10810,10 +10810,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\InvestHouseAPI\\InvestHouseAPI\\InvestHouseAPI.csproj",
+      "projectUniqueName": "D:\\Work\\GitProjects\\InvestHouseAPI\\InvestHouseAPI\\InvestHouseAPI.csproj",
       "projectName": "InvestHouseAPI",
-      "projectPath": "D:\\Work\\InvestHouseAPI\\InvestHouseAPI\\InvestHouseAPI.csproj",
-      "outputPath": "D:\\Work\\InvestHouseAPI\\InvestHouseAPI\\obj\\",
+      "projectPath": "D:\\Work\\GitProjects\\InvestHouseAPI\\InvestHouseAPI\\InvestHouseAPI.csproj",
+      "outputPath": "D:\\Work\\GitProjects\\InvestHouseAPI\\InvestHouseAPI\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
