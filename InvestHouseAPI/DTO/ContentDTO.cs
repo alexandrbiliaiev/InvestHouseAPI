@@ -14,8 +14,11 @@ namespace InvestHouseAPI.DTO
         public DateTime? CreationDate { get; set; }
         public int? OrderNumber { get; set; }
         public string MenuName {get; set;}
+        public string MenuNameUA { get; set; }
         public string Title { get; set; }
+        public string TitleUA { get; set; }
         public string Body { get; set; }
+        public string BodyUA { get; set; }
         
         public ContentDTO()
         {
@@ -32,6 +35,9 @@ namespace InvestHouseAPI.DTO
             MenuName = content.MenuName;
             Title = content.Title;
             Body = content.Body;
+            BodyUA = content.BodyUa;
+            MenuNameUA = content.MenuNameUa;
+            TitleUA = content.TitleUa;
         }
     
     }

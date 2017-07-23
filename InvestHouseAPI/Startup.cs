@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using System.IO;
 
 namespace InvestHouseAPI
 {
@@ -18,6 +19,7 @@ namespace InvestHouseAPI
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
+
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
@@ -41,12 +43,23 @@ namespace InvestHouseAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
 
+             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+             loggerFactory.AddDebug();
+            app.UseStaticFiles();
             app.UseCors("AllowAll");
 
-            app.UseMvc();
+             app.UseMvc();
+
+            /* app.UseCors("AllowAll");
+            var options = new JwtBearerOptions
+            {
+                Audience = "http://alexidomka-001-site1.gtempurl.com",
+                Authority = "https://alexbiliaiev.eu.auth0.com/"
+            };
+            app.UseJwtBearerAuthentication(options);
+
+            app.UseMvc(); */
         }
     }
 }

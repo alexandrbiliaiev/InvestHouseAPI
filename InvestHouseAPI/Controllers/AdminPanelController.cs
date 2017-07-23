@@ -13,82 +13,60 @@ namespace InvestHouseAPI.Controllers
 
     public class AdminPanelController : Controller
     {
-
         public DB_A26102_investHouseContext context = new DB_A26102_investHouseContext();
 
         [HttpPost]
-        [Route("api/admin/site/get")]
-        public IEnumerable<SitesDTO> getSites([FromBody] SitesDTO site)
+        [Route("api/admin/content/get")]
+        public ContentDTO getContent([FromBody] ContentRequestDTO contentRequest)
         {
             using (context)
             {
-                List<SitesDTO> sites = context.Sites.Where(s => s.Id == site.Id).ToList().Select(s => new SitesDTO(s)).ToList();
+                ContentDTO content = context.Content.Where(i => i.SiteId == contentRequest.Id && i.Type == contentRequest.ContentType).ToList().Select(c => new ContentDTO(c)).FirstOrDefault();
 
-                return sites;
+                return content;
             }
         }
 
-
         [HttpPost]
-        [Route("/api/admin/sites/save")]
-        public SitesDTO SaveSite([FromBody] SitesDTO site)
+        [Route("/api/admin/content/save")]
+        public ContentDTO SaveContent([FromBody] ContentDTO content)
         {
             using (context)
             {
-                Sites st;
-                if (site.Id != 0)
+                Content cont;
+                if (content.Id != 0)
                 {
-                    st = context.Sites.FirstOrDefault(c => c.Id == site.Id);
+                    cont = context.Content.FirstOrDefault(c => c.Id == content.Id);
                 }
                 else
                 {
-                    st = new Sites();
-                    context.Sites.Add(st);
+                    cont = new Content();
+                    context.Content.Add(cont);
+                    cont.CreationDate = DateTime.Now;
                 }
 
-                if (st == null)
+                if (cont == null)
                 {
                     return null;
                 }
 
-                st.Url = site.Url;
-                st.Title = site.Title;
-                st.Description = site.Description;
+                cont.MenuName = content.MenuName;
+                cont.MenuNameUa = content.MenuNameUA;
+                cont.Title = content.Title;
+                cont.TitleUa = content.TitleUA;
+                cont.OrderNumber = content.OrderNumber;
+                cont.SiteId = content.SiteId;
+                cont.Type = 0;
+                cont.Body = content.Body;
+                cont.BodyUa = content.BodyUA;
+                
 
                 context.SaveChanges();
-                site.Id = st.Id;
-                return site;
+                content.Id = cont.Id;
+                return content;
             }
         }
 
-        [HttpPost]
-        [Route("/api/admin/sites/delete")]
-        public bool deleteSite([FromBody] SitesDTO site)
-        {
-            using (context)
-            {
-                Sites siteToRemove = context.Sites.Where(s => s.Id == site.Id).FirstOrDefault();
-
-                context.Remove(siteToRemove);
-
-                context.SaveChanges();
-
-                return true;
-            }
-        }
-
-
-        [HttpPost]
-        [Route("api/admin/content/get")]
-        public IEnumerable<ContentDTO> getContent([FromBody] SitesDTO site)
-        {
-            using (context)
-            {
-                List<ContentDTO> contentList = context.Content.Where(i => i.SiteId == site.Id).ToList().Select(c => new ContentDTO(c)).ToList();
-
-                return contentList;
-            }
-        }
 
 
 

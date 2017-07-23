@@ -7,6 +7,7 @@ namespace InvestHouseAPI.Models
     public partial class DB_A26102_investHouseContext : DbContext
     {
         public virtual DbSet<Content> Content { get; set; }
+        public virtual DbSet<Investments> Investments { get; set; }
         public virtual DbSet<Sites> Sites { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,12 +28,20 @@ namespace InvestHouseAPI.Models
                     .HasColumnName("body")
                     .HasColumnType("text");
 
+                entity.Property(e => e.BodyUa)
+                    .HasColumnName("bodyUA")
+                    .HasColumnType("text");
+
                 entity.Property(e => e.CreationDate)
                     .HasColumnName("creationDate")
                     .HasColumnType("date");
 
                 entity.Property(e => e.MenuName)
                     .HasColumnName("menuName")
+                    .HasColumnType("varchar(100)");
+
+                entity.Property(e => e.MenuNameUa)
+                    .HasColumnName("menuNameUA")
                     .HasColumnType("varchar(100)");
 
                 entity.Property(e => e.OrderNumber).HasColumnName("orderNumber");
@@ -43,7 +52,32 @@ namespace InvestHouseAPI.Models
                     .HasColumnName("title")
                     .HasColumnType("varchar(100)");
 
+                entity.Property(e => e.TitleUa)
+                    .HasColumnName("titleUA")
+                    .HasColumnType("varchar(100)");
+
                 entity.Property(e => e.Type).HasColumnName("type");
+            });
+
+            modelBuilder.Entity<Investments>(entity =>
+            {
+                entity.ToTable("investments");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Description).HasMaxLength(1000);
+
+                entity.Property(e => e.DescriptionUa)
+                    .HasColumnName("DescriptionUA")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.Logo).HasMaxLength(500);
+
+                entity.Property(e => e.Name).HasMaxLength(100);
+
+                entity.Property(e => e.NameUa)
+                    .HasColumnName("NameUA")
+                    .HasMaxLength(100);
             });
 
             modelBuilder.Entity<Sites>(entity =>

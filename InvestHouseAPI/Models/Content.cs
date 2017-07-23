@@ -13,5 +13,8 @@ namespace InvestHouseAPI.Models
         public string MenuName { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
+        public string MenuNameUa { get; set; }
+        public string TitleUa { get; set; }
+        public string BodyUa { get; set; }
     }
 }
