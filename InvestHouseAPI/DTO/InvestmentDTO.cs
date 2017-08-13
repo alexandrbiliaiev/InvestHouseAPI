@@ -15,6 +15,7 @@ namespace InvestHouseAPI.DTO
         public string DescriptionUa { get; set; }
         public bool? Done { get; set; }
         public string Logo { get; set; }
+        public string Link { get; set; }
 
         public InvestmentDTO()
         {
@@ -29,6 +30,7 @@ namespace InvestHouseAPI.DTO
             DescriptionUa = investment.DescriptionUa;
             Done = investment.Done;
             Logo = investment.Logo;
+            Link = investment.Link;
         }
 
 

@@ -26,7 +26,7 @@ namespace InvestHouseAPI.Controllers
 
 
 
-        public DB_A26102_investHouseContext context = new DB_A26102_investHouseContext();
+        public DB_A29536_investHouseContext context = new DB_A29536_investHouseContext();
 
         [HttpGet]
         [Route("get")]
@@ -70,6 +70,7 @@ namespace InvestHouseAPI.Controllers
             investment.DescriptionUa = inv.DescriptionUa;
             investment.Done = inv.Done;
             investment.Logo = inv.Logo;
+            investment.Link = inv.Link;
 
 
             context.SaveChanges();
