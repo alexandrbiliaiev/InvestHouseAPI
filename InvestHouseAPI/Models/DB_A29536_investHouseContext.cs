@@ -7,13 +7,18 @@ namespace InvestHouseAPI.Models
     public partial class DB_A29536_investHouseContext : DbContext
     {
         public virtual DbSet<Content> Content { get; set; }
+        public virtual DbSet<HouseFiles> HouseFiles { get; set; }
+        public virtual DbSet<HouseGallery> HouseGallery { get; set; }
+        public virtual DbSet<HouseMapping> HouseMapping { get; set; }
+        public virtual DbSet<HouseMappingMarker> HouseMappingMarker { get; set; }
+        public virtual DbSet<Houses> Houses { get; set; }
         public virtual DbSet<Investments> Investments { get; set; }
         public virtual DbSet<News> News { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-            optionsBuilder.UseSqlServer(@"Data Source = sql6003.smarterasp.net; Initial Catalog = DB_A29536_investHouse; User Id = DB_A29536_investHouse_admin; Password = k92gjdftyvqyzqyz;");
+            optionsBuilder.UseSqlServer(@"Server=sql6003.smarterasp.net; Initial Catalog = DB_A29536_investHouse; User Id = DB_A29536_investHouse_admin; Password = k92gjdftyvqyzqyz;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,6 +48,127 @@ namespace InvestHouseAPI.Models
                     .HasMaxLength(100);
 
                 entity.Property(e => e.Type).HasColumnName("type");
+            });
+
+            modelBuilder.Entity<HouseFiles>(entity =>
+            {
+                entity.ToTable("houseFiles");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.HouseId).HasColumnName("houseId");
+
+                entity.Property(e => e.Link)
+                    .HasColumnName("link")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.Preview).HasColumnName("preview");
+
+                entity.Property(e => e.SiteId).HasColumnName("siteId");
+            });
+
+            modelBuilder.Entity<HouseGallery>(entity =>
+            {
+                entity.ToTable("houseGallery");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.HouseId).HasColumnName("houseId");
+
+                entity.Property(e => e.Link)
+                    .HasColumnName("link")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.SiteId).HasColumnName("siteId");
+            });
+
+            modelBuilder.Entity<HouseMapping>(entity =>
+            {
+                entity.ToTable("houseMapping");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Description)
+                    .HasColumnName("description")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.IsOneImage).HasColumnName("isOneImage");
+
+                entity.Property(e => e.Link)
+                    .HasColumnName("link")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.SiteId).HasColumnName("siteId");
+            });
+
+            modelBuilder.Entity<HouseMappingMarker>(entity =>
+            {
+                entity.ToTable("houseMappingMarker");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.HouseId).HasColumnName("houseId");
+
+                entity.Property(e => e.ImageLink)
+                    .HasColumnName("imageLink")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.MapId).HasColumnName("mapId");
+
+                entity.Property(e => e.XMarker).HasColumnName("xMarker");
+
+                entity.Property(e => e.YMarker).HasColumnName("yMarker");
+            });
+
+            modelBuilder.Entity<Houses>(entity =>
+            {
+                entity.ToTable("houses");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.AreaPrice)
+                    .HasColumnName("areaPrice")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.AreaSquare)
+                    .HasColumnName("areaSquare")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Description)
+                    .HasColumnName("description")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.HousePrice)
+                    .HasColumnName("housePrice")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.HouseSqaure)
+                    .HasColumnName("houseSqaure")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.MarkerNumber)
+                    .HasColumnName("markerNumber")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Number)
+                    .HasColumnName("number")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.SiteId).HasColumnName("siteId");
+
+                entity.Property(e => e.Status).HasColumnName("status");
+
+                entity.Property(e => e.TotalPrice)
+                    .HasColumnName("totalPrice")
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Investments>(entity =>

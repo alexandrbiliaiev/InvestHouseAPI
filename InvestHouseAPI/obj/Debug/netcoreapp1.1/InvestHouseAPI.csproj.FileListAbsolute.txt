@@ -16,3 +16,5 @@ D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\Invest
 D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.dll
 D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.pdb
 D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.csprojResolveAssemblyReference.cache
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.csproj.CoreCompileInputs.cache
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp1.1\InvestHouseAPI.AssemblyInfoInputs.cache

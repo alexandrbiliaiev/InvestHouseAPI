@@ -24,8 +24,6 @@ namespace InvestHouseAPI.Controllers
             _env = env;
         }
 
-
-
         public DB_A29536_investHouseContext context = new DB_A29536_investHouseContext();
 
         [HttpGet]
