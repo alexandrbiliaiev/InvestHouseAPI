@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,96 +6,71 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using InvestHouseAPI.Models;
 using InvestHouseAPI.DTO;
-using Microsoft.Net.Http.Headers;
-using Microsoft.AspNetCore.Hosting;
+using System.Net.Http.Headers;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace InvestHouseAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/investments")]
-    public class InvestmentsController : Controller
+    [Route("api/GeneralSettings")]
+    public class GeneralSettingsController : Controller
     {
-
         private readonly IHostingEnvironment _env;
 
-        public InvestmentsController(IHostingEnvironment env)
+        public GeneralSettingsController(IHostingEnvironment env)
         {
             _env = env;
         }
 
         public DB_A29536_investHouseContext context = new DB_A29536_investHouseContext();
 
-        [HttpGet]
+        [HttpPost]
         [Route("get")]
-        public List<InvestmentDTO> GetInvestments()
+        public GeneralSettingsDTO GetSettings ()
         {
-            List<InvestmentDTO> investments = context.Investments.ToList().Select(i => new InvestmentDTO(i)).ToList();
-            return investments;
-        }
+            GeneralSettingsDTO settings = context.GeneralSettings.ToList().Select(s => new GeneralSettingsDTO(s)).FirstOrDefault();
 
-        [HttpGet]
-        [Route("get/{id}")]
-        public InvestmentDTO GetInvestment([FromRoute]int id)
-        {
-            InvestmentDTO investment = context.Investments.Where(i => i.Id == id).ToList().Select(i => new InvestmentDTO(i)).FirstOrDefault();
-            return investment;
+            return settings;
+
         }
 
         [HttpPost]
         [Route("save")]
-        public InvestmentDTO SaveInvestment([FromBody] InvestmentDTO inv)
+        public GeneralSettingsDTO SaveSettings ([FromBody] GeneralSettingsDTO settings)
         {
-            Investments investment;
-            if (inv.Id != 0)
+            GeneralSettings setting;
+            if (settings.Id != 0)
             {
-                investment = context.Investments.FirstOrDefault(c => c.Id == inv.Id);
+                setting = context.GeneralSettings.FirstOrDefault(s => s.Id == settings.Id);
             }
             else
             {
-                investment = new Investments();
-                context.Investments.Add(investment);
+                setting = new GeneralSettings();
+                context.GeneralSettings.Add(setting);
             }
 
-            if (investment == null)
+            if (setting == null)
             {
                 return null;
             }
 
-            investment.Name = inv.Name;
-            investment.NameUa = inv.NameUa;
-            investment.Description = inv.Description;
-            investment.DescriptionUa = inv.DescriptionUa;
-            investment.Done = inv.Done;
-            investment.Logo = inv.Logo;
-            investment.Link = inv.Link;
+            setting.Address = settings.Address;
+            setting.BackgroundImage = settings.BackgroundImage;
+            setting.Phones = settings.Phones;
+            setting.Fax = settings.Fax;
+            setting.Email = settings.Email;
+            setting.Skype = settings.Skype;
 
 
             context.SaveChanges();
-            inv.Id = investment.Id;
-            return inv;
-        }
+            settings.Id = setting.Id;
 
-        [HttpGet]
-        [Route("remove/{id}")]
-        public bool RemoveInvestment([FromRoute] int id)
-        {
-            try
-            {
-                var investment = context.Investments.Where(i => i.Id == id).FirstOrDefault();
-                context.Investments.Remove(investment);
-                context.SaveChanges();
-                return true;
-            }
-            catch(Exception e)
-            {
-                return false;
-            }
-           
+            return settings;
         }
 
         [HttpPost]
-        [Route("addLogo")]
+        [Route("addBackgroundImage")]
         public FileResp UploadFiles(IFormFile file)
         {
             try
@@ -104,7 +79,7 @@ namespace InvestHouseAPI.Controllers
                 {
                     FileResp aa = new FileResp();
 
-                    return aa ;
+                    return aa;
                 }
 
                 string fileName = SaveFile(file);
@@ -114,7 +89,7 @@ namespace InvestHouseAPI.Controllers
                 ff.Name = fileName;
 
                 return ff;
-               
+
             }
             catch (Exception ex)
             {
@@ -149,6 +124,5 @@ namespace InvestHouseAPI.Controllers
 
             return filename;
         }
-
     }
 }

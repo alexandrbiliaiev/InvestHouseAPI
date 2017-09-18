@@ -1,0 +1,11 @@
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp2.0\InvestHouseAPI.csprojResolveAssemblyReference.cache
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp2.0\InvestHouseAPI.csproj.CoreCompileInputs.cache
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp2.0\InvestHouseAPI.AssemblyInfoInputs.cache
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp2.0\InvestHouseAPI.AssemblyInfo.cs
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp2.0\InvestHouseAPI.deps.json
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp2.0\InvestHouseAPI.runtimeconfig.json
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp2.0\InvestHouseAPI.runtimeconfig.dev.json
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp2.0\InvestHouseAPI.dll
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\bin\Debug\netcoreapp2.0\InvestHouseAPI.pdb
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp2.0\InvestHouseAPI.dll
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\obj\Debug\netcoreapp2.0\InvestHouseAPI.pdb

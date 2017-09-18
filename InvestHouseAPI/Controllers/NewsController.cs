@@ -127,9 +127,11 @@ namespace InvestHouseAPI.Controllers
         private string SaveFile(IFormFile file)
         {
             string filename = ContentDispositionHeaderValue
-                .Parse(file.ContentDisposition)
-                .FileName
-                .Trim('"');
+       .Parse(file.ContentDisposition)
+       .FileName
+       .TrimEnd()
+       .TrimStart()
+       .ToString();
 
             filename = $"\\files\\{Guid.NewGuid()}\\{filename}".Replace("\\", "/");
 

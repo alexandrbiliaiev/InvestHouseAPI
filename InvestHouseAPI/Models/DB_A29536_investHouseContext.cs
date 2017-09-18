@@ -7,6 +7,7 @@ namespace InvestHouseAPI.Models
     public partial class DB_A29536_investHouseContext : DbContext
     {
         public virtual DbSet<Content> Content { get; set; }
+        public virtual DbSet<GeneralSettings> GeneralSettings { get; set; }
         public virtual DbSet<HouseFiles> HouseFiles { get; set; }
         public virtual DbSet<HouseGallery> HouseGallery { get; set; }
         public virtual DbSet<HouseMapping> HouseMapping { get; set; }
@@ -17,8 +18,11 @@ namespace InvestHouseAPI.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-            optionsBuilder.UseSqlServer(@"Server=sql6003.smarterasp.net; Initial Catalog = DB_A29536_investHouse; User Id = DB_A29536_investHouse_admin; Password = k92gjdftyvqyzqyz;");
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer(@"Server=sql6003.smarterasp.net; Initial Catalog = DB_A29536_investHouse; User Id = DB_A29536_investHouse_admin; Password = k92gjdftyvqyzqyz;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -48,6 +52,37 @@ namespace InvestHouseAPI.Models
                     .HasMaxLength(100);
 
                 entity.Property(e => e.Type).HasColumnName("type");
+            });
+
+            modelBuilder.Entity<GeneralSettings>(entity =>
+            {
+                entity.ToTable("generalSettings");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Address)
+                    .HasColumnName("address")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.BackgroundImage)
+                    .HasColumnName("backgroundImage")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.Email)
+                    .HasColumnName("email")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.Fax)
+                    .HasColumnName("fax")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.Phones)
+                    .HasColumnName("phones")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.Skype)
+                    .HasColumnName("skype")
+                    .HasMaxLength(500);
             });
 
             modelBuilder.Entity<HouseFiles>(entity =>
