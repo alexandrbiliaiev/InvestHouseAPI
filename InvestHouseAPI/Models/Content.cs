@@ -12,5 +12,6 @@ namespace InvestHouseAPI.Models
         public int? OrderNumber { get; set; }
         public string Title { get; set; }
         public int? Type { get; set; }
+        public int? SiteId { get; set; }
     }
 }

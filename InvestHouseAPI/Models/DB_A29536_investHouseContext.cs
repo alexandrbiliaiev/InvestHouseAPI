@@ -47,6 +47,8 @@ namespace InvestHouseAPI.Models
 
                 entity.Property(e => e.OrderNumber).HasColumnName("orderNumber");
 
+                entity.Property(e => e.SiteId).HasColumnName("siteId");
+
                 entity.Property(e => e.Title)
                     .HasColumnName("title")
                     .HasMaxLength(100);
@@ -75,6 +77,50 @@ namespace InvestHouseAPI.Models
                 entity.Property(e => e.Fax)
                     .HasColumnName("fax")
                     .HasMaxLength(500);
+
+                entity.Property(e => e.IntroButtonBgColor)
+                    .HasColumnName("introButtonBgColor")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.IntroButtonColor)
+                    .HasColumnName("introButtonColor")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.IntroButtonFontColor)
+                    .HasColumnName("introButtonFontColor")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.IntroButtonText)
+                    .HasColumnName("introButtonText")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.IntroButtonTextFont)
+                    .HasColumnName("introButtonTextFont")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.IntroHeading)
+                    .HasColumnName("introHeading")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.IntroHeadingColor)
+                    .HasColumnName("introHeadingColor")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.IntroHeadingFont)
+                    .HasColumnName("introHeadingFont")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.IntroLeadIn)
+                    .HasColumnName("introLeadIn")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.IntroLeadInColor)
+                    .HasColumnName("introLeadInColor")
+                    .HasColumnType("nchar(50)");
+
+                entity.Property(e => e.IntroLeadInFont)
+                    .HasColumnName("introLeadInFont")
+                    .HasColumnType("nchar(100)");
 
                 entity.Property(e => e.Phones)
                     .HasColumnName("phones")
@@ -247,7 +293,7 @@ namespace InvestHouseAPI.Models
 
                 entity.Property(e => e.CreationDate)
                     .HasColumnName("creationDate")
-                    .HasColumnType("date");
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.Image)
                     .HasColumnName("image")

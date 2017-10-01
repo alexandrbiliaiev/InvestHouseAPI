@@ -1,0 +1,8 @@
+D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=InvestHouseAPI
+--content-root=D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI
+--file=D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\Views\Shared\Error.cshtml
+--file=D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\Views\Shared\Layout.cshtml
+--file=D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\Views\_ViewImports.cshtml
+--file=D:\Work\GitProjects\InvestHouseAPI\InvestHouseAPI\Views\_ViewStart.cshtml

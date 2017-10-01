@@ -30,7 +30,15 @@ namespace InvestHouseAPI.Controllers
         [Route("get/{siteId}")]
         public List<NewsDTO> GetNews([FromRoute]int siteId)
         {
-            List<NewsDTO> news = context.News.Where(i => i.SiteId == siteId).ToList().Select(n => new NewsDTO(n)).ToList();
+            List<NewsDTO> news = context.News.Where(i => i.SiteId == siteId).OrderByDescending(i => i.CreationDate).ToList().Select(n => new NewsDTO(n)).ToList();
+            return news;
+        }
+
+        [HttpGet]
+        [Route("get/top/{siteId}")]
+        public List<NewsDTO> GetTopNews([FromRoute]int siteId)
+        {
+            List<NewsDTO> news = context.News.Where(i => i.SiteId == siteId).OrderByDescending(i => i.CreationDate).Take(3).ToList().Select(n => new NewsDTO(n)).ToList();
             return news;
         }
 
@@ -50,12 +58,12 @@ namespace InvestHouseAPI.Controllers
             if (art.Id != 0)
             {
                 article = context.News.FirstOrDefault(c => c.Id == art.Id);
-                article.CreationDate = DateTime.Now;
             }
             else
             {
                 article = new News();
                 context.News.Add(article);
+                article.CreationDate = DateTime.Now;
             }
 
             if (article == null)
@@ -127,11 +135,9 @@ namespace InvestHouseAPI.Controllers
         private string SaveFile(IFormFile file)
         {
             string filename = ContentDispositionHeaderValue
-       .Parse(file.ContentDisposition)
-       .FileName
-       .TrimEnd()
-       .TrimStart()
-       .ToString();
+                .Parse(file.ContentDisposition)
+                .FileName.ToString()
+                .Replace("\"", "");
 
             filename = $"\\files\\{Guid.NewGuid()}\\{filename}".Replace("\\", "/");
 

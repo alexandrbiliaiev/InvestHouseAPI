@@ -25,11 +25,11 @@ namespace InvestHouseAPI.Controllers
 
         public DB_A29536_investHouseContext context = new DB_A29536_investHouseContext();
 
-        [HttpPost]
+        [HttpGet]
         [Route("get")]
-        public GeneralSettingsDTO GetSettings ()
+        public dynamic GetSettings ()
         {
-            GeneralSettingsDTO settings = context.GeneralSettings.ToList().Select(s => new GeneralSettingsDTO(s)).FirstOrDefault();
+            var settings = context.GeneralSettings.FirstOrDefault();
 
             return settings;
 
@@ -37,18 +37,12 @@ namespace InvestHouseAPI.Controllers
 
         [HttpPost]
         [Route("save")]
-        public GeneralSettingsDTO SaveSettings ([FromBody] GeneralSettingsDTO settings)
+        public GeneralSettingsDTO SaveSettings([FromBody] GeneralSettingsDTO settings)
         {
             GeneralSettings setting;
-            if (settings.Id != 0)
-            {
-                setting = context.GeneralSettings.FirstOrDefault(s => s.Id == settings.Id);
-            }
-            else
-            {
-                setting = new GeneralSettings();
-                context.GeneralSettings.Add(setting);
-            }
+
+            setting = context.GeneralSettings.FirstOrDefault(s => s.Id == settings.Id);
+
 
             if (setting == null)
             {
@@ -61,6 +55,17 @@ namespace InvestHouseAPI.Controllers
             setting.Fax = settings.Fax;
             setting.Email = settings.Email;
             setting.Skype = settings.Skype;
+            setting.IntroLeadIn = settings.IntroLeadIn;
+            setting.IntroLeadInColor = settings.IntroLeadInColor;
+            setting.IntroLeadInFont = settings.IntroLeadInFont;
+            setting.IntroHeading = settings.IntroHeading;
+            setting.IntroHeadingColor = settings.IntroHeadingColor;
+            setting.IntroHeadingFont = settings.IntroHeadingFont;
+            setting.IntroButtonText = settings.IntroButtonText;
+            setting.IntroButtonColor = settings.IntroButtonColor;
+            setting.IntroButtonFontColor = settings.IntroButtonFontColor;
+            setting.IntroButtonBgColor = settings.IntroButtonBgColor;
+            setting.IntroButtonTextFont = settings.IntroButtonTextFont;
 
 
             context.SaveChanges();
